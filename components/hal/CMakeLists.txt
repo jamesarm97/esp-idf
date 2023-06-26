@@ -2,7 +2,9 @@ idf_build_get_property(target IDF_TARGET)
 
 set(srcs "wdt_hal_iram.c"
          "mpu_hal.c"
-         "cpu_hal.c")
+         "cpu_hal.c"
+         "efuse_hal.c"
+         "${target}/efuse_hal.c")
 
 set(includes "${target}/include" "include" "platform_port/include")
 
@@ -68,7 +70,7 @@ if(NOT BOOTLOADER_BUILD)
                     "esp32s2/touch_sensor_hal.c"
                     "esp32s2/dac_hal.c"
                     "esp32s2/interrupt_descriptor_table.c"
-                    "usbh_hal.c")
+                    "usb_dwc_hal.c")
     endif()
 
     if(${target} STREQUAL "esp32s3")
@@ -90,7 +92,7 @@ if(NOT BOOTLOADER_BUILD)
             "esp32s3/interrupt_descriptor_table.c"
             "esp32s3/touch_sensor_hal.c"
             "esp32s3/rtc_cntl_hal.c"
-            "usbh_hal.c")
+            "usb_dwc_hal.c")
     endif()
 
     if(${target} STREQUAL "esp32c3")
